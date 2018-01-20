@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jan 20, 2018 8:05:27 PM by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="in.coderinfotech.batchschedule.BatchDetails" table="batch_details">
+        <id name="batchId" type="long">
+            <column name="BATCH_ID"/>
+            <generator class="increment"/>
+        </id>
+        <property generated="never" lazy="false" name="batchName" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="BATCH_NAME"/>
+        </property>
+        <property generated="never" lazy="false" name="trainerName" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="TRAINER_NAME"/>
+        </property>
+        <property generated="never" lazy="false" name="startDate" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="START_DATE"/>
+        </property>
+        <property generated="never" lazy="false" name="endDate" optimistic-lock="true" type="date" unique="false">
+            <column length="10" name="END_DATE"/>
+        </property>
+        <property generated="never" lazy="false" name="duration" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="DURATION"/>
+        </property>
+        <property generated="never" lazy="false" name="timing" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="TIMING"/>
+        </property>
+        <property generated="never" lazy="false" name="center" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="CENTER"/>
+        </property>
+        <property generated="never" lazy="false" name="lab" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="LAB"/>
+        </property>
+        <property generated="never" lazy="false" name="capacity" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="CAPACITY"/>
+        </property>
+        <property generated="never" lazy="false" name="batchSchedule" optimistic-lock="true" type="string" unique="false">
+            <column length="65535" name="BATCH_SCHEDULE"/>
+        </property>
+        <property generated="never" lazy="false" name="isCompleted" optimistic-lock="true" type="java.lang.Character" unique="false">
+            <column length="1" name="IS_COMPLETED"/>
+        </property>
+    </class>
+</hibernate-mapping>

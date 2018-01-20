@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jan 20, 2018 8:05:27 PM by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="in.coderinfotech.batchschedule.CityMst" table="city_mst">
+        <id name="cityId" type="long">
+            <column name="CITY_ID"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="in.coderinfotech.batchschedule.StateMst" embed-xml="true" fetch="select" insert="true" name="stateMst" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="STATE_ID"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="cityCode" optimistic-lock="true" type="string" unique="false">
+            <column length="35" name="CITY_CODE"/>
+        </property>
+        <property generated="never" lazy="false" name="cityName" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="CITY_NAME"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="personDetailses" optimistic-lock="true" sort="unsorted" table="person_details">
+            <key on-delete="noaction">
+                <column name="CITY_ID"/>
+            </key>
+            <one-to-many class="in.coderinfotech.batchschedule.PersonDetails" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

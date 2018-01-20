@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jan 20, 2018 8:05:27 PM by Hibernate Tools 5.2.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="in.coderinfotech.batchschedule.StudentDetails" table="student_details">
+        <id name="studentId" type="long">
+            <column name="STUDENT_ID"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="in.coderinfotech.batchschedule.PersonDetails" embed-xml="true" fetch="select" insert="true" name="personDetails" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="STUDENT_PERSON_DETAILS_ID"/>
+        </many-to-one>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="feesDetailses" optimistic-lock="true" sort="unsorted" table="fees_details">
+            <key on-delete="noaction">
+                <column name="STUDENT_ID"/>
+            </key>
+            <one-to-many class="in.coderinfotech.batchschedule.FeesDetails" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
