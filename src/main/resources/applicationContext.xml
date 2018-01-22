@@ -4,10 +4,10 @@
 	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:component-scan base-package="org.springframework.myapp" />
+	<context:component-scan base-package="in.codertechnolgies.batchschedule" />
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -27,9 +27,30 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:hibernate/hibernate.cfg.xml" />
-	</bean>
+		<!-- <property name="configLocation" value="classpath:hibernate/hibernate.cfg.xml" 
+			/> -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
 
+		<property name="annotatedClasses">
+			<list>
+				<value>hibernate.in.coderinfotech.batchschedule.StudentDetails </value>
+				<value>hibernate.in.coderinfotech.batchschedule.AcademicDetails </value>
+				<value>hibernate.in.coderinfotech.batchschedule.BatchDetails</value>
+				<value>hibernate.in.coderinfotech.batchschedule.CityMst </value>
+				<value>hibernate.in.coderinfotech.batchschedule.EmploymentDetails</value>
+				<value>hibernate.in.coderinfotech.batchschedule.FeesDetails </value>
+				<value>hibernate.in.coderinfotech.batchschedule.PersonDetails </value>
+				<value>hibernate.in.coderinfotech.batchschedule.StateMst </value>
+				<value>hibernate.in.coderinfotech.batchschedule.StudentDetails </value>
+				<value>hibernate.in.coderinfotech.batchschedule.TrainerDetails </value>
+			</list>
+		</property>
+	</bean>
 	<tx:annotation-driven />
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
